@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $town_city_id = $town_city->create($data);
     
     
-
+   
     
 }
 ?>
