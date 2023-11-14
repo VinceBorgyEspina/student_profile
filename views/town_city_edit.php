@@ -30,3 +30,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <title>Edit Student</title>
+</head>
+<body>
+    <!-- Include the header and navbar -->
+    <?php include('templates/header.html'); ?>
+    <?php include('includes/navbar.php'); ?>
+
+    <div class="content">
+    <h2>Edit Student Information</h2>
+    <form action="" method="post">
+        <input type="hidden" name="id" value="<?php echo $town_city_Data['id']; ?>">
+        
+        
+        <label for="birthday">Name: </label>
+        <input type="text" name="name" id="name" value="<?php echo $town_city_Data['name']; ?>">
+        
+        <input type="submit" value="Update">
+    </form>
+    </div>
+    <?php include('templates/footer.html'); ?>
+</body>
+</html>
