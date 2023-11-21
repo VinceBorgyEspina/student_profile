@@ -1,6 +1,6 @@
 <?php
 include_once("../db.php"); // Include the Database class file
-include_once("../town_city.php");
+include_once("../province.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = [    
@@ -8,17 +8,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     'name' => $_POST['name'],
     ];
 
-    // Instantiate the Database and Town City classes
+    // Instantiate the Database and Province classes
     $database = new Database();
-    $town_city = new TownCity($database);
-    $town_city_id = $town_city->create($data);
-    //Javascript from stackoverflow
+    $province = new Province($database);
+    $province_id = $province->create($data);
+    //javascript from stackoverflow for pop up message
     echo '<script>
                 alert("Record added successfully.");
-                window.location.href = "town.city.view.php?msg=Record added successfully.";
+                window.location.href = "province.view.php?msg=Record added successfully.";
               </script>';
-
-              
+   
+    
 }
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
 
-    <title>Add New Town</title>
+    <title>Add Province</title>
 </head>
 <body>
     <!-- Include the header and navbar -->
@@ -36,21 +36,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include('../includes/navbar.php'); ?>
 
     <div class="content">
-    <h1>Add Town City</h1>
+    <h1>Add Province</h1>
     <form action="" method="post" class="centered-form">
-        <!-- <label for="id">Town ID:</label>
-        <input type="text" name="id" id="id" required> -->
 
-        <label for="name">Town Name:</label>
+        <label for="name">Province Name:</label>
         <input type="text" name="name" id="name" required>
 
-        <input type="submit" value="Add Town City">
+        <input type="submit" value="Add Province">
     </form>
     </div>
     
     <?php include('../templates/footer.html'); ?>
 </body>
 </html>
-
-
-

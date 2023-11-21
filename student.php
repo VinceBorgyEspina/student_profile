@@ -11,7 +11,8 @@ class Student {
     public function create($data) {
         try {
             // Prepare the SQL INSERT statement
-            $sql = "INSERT INTO students(student_number, first_name, middle_name, last_name, gender, birthday) VALUES(:student_number, :first_name, :middle_name, :last_name, :gender, :birthday);";
+            $sql = "INSERT INTO students(student_number, first_name, middle_name, last_name, gender, birthday) 
+            VALUES(:student_number, :first_name, :middle_name, :last_name, :gender, :birthday);";
             $stmt = $this->db->getConnection()->prepare($sql);
 
             // Bind values to placeholders
@@ -110,7 +111,14 @@ class Student {
 
     public function displayAll(){
         try {
-            $sql = "SELECT * FROM students LIMIT 10"; // Modify the table name to match your database
+            $sql = "SELECT s.id, s.student_number, s.first_name, s.last_name, s.middle_name, s.gender, s.birthday, sd.contact_number, sd.street, (SELECT name FROM province WHERE id = sd.province), (SELECT name FROM province WHERE id = sd.province) , sd.zip_code
+            FROM students s
+            INNER JOIN student_details sd
+
+            ON s.id = sd.student_id
+            ORDER BY s.id DESC
+            LIMIT 20"; // Modify the table name to match your database
+            //$sql = 'SELECT * FROM students order by id desc limit 20';
             $stmt = $this->db->getConnection()->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

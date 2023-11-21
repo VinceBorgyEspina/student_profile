@@ -10,7 +10,7 @@ class TownCity {
 
     public function getAll() {
         try {
-            $sql = "SELECT * FROM town_city";
+            $sql = "SELECT * FROM town_city ORDER BY id DESC LIMIT 20";
             $stmt = $this->db->getConnection()->prepare($sql);
             $stmt->execute();
 
@@ -104,5 +104,7 @@ class TownCity {
             throw $e; // Re-throw the exception for higher-level handling
         }
     }
+
+
 }
 ?>

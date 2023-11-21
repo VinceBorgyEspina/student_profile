@@ -25,3 +25,6 @@ Using the skills you've learned from IM and DB2 create reports for this project
 -->
 - Add 3 types of Report in Menu Report
 - Modify index.php, create a chart using ChartJS (dashboard like)
+
+
+Serencio and Espina

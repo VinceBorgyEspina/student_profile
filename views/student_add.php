@@ -41,9 +41,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $studentDetails = new StudentDetails($database);
         
         if ($studentDetails->create($studentDetailsData)) {
-            echo "Record inserted successfully.";
+        //javascript from stackoverflow for pop up message
+        echo '<script>
+                    alert("Record added successfully.");
+                    window.location.href = "students.view.php?msg=Record added successfully.";
+                </script>';
         } else {
-            echo "Failed to insert the record.";
+        echo '<script>
+                    alert("Failed to insert record.");
+                    window.location.href = "province.view.php?msg=Record added successfully.";
+                </script>';
         }
     }
 
@@ -83,8 +90,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <label for="gender">Gender:</label>
         <select name="gender" id="gender" required>
-            <option value="0">Male</option>
-            <option value="1">Female</option>
+            <option value=0>Male</option> <!-- altered the db to allow changes and fixed a bug query = "ALTER TABLE students AUTO_INCREMENT = 1;" -->
+            <option value=1>Female</option> <!-- changed from string "0" and "1" to int 0 and 1 because the db is tinyint -->
         </select>
 
         <label for="birthday">Birthdate:</label>
